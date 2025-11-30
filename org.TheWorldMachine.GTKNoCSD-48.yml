@@ -1,0 +1,47 @@
+id: org.TheWorldMachine.GTKNoCSD
+branch: "1.0"
+runtime: org.gnome.Platform
+runtime-version: "48"
+sdk: org.gnome.Sdk
+
+build-options:
+  prefix: /usr
+
+modules:
+  - name: libgtk-nocsd
+    buildsystem: simple
+    build-commands: [
+      "meson wlroots build --wrap-mode=forcefallback -Dwerror=false --prefix=$PWD/install",
+      "ninja -C build",
+      "ninja -C build install",
+      "cd Source && LD_LIBRARY_PATH=$PWD/../install/lib/:$PWD/../install/lib64/ PKG_CONFIG_PATH=$PWD/../install/lib/pkgconfig/:$PWD/../install/lib64/pkgconfig/ ./Build.sh",
+      "install -Dm 755 ./Source/libgtk-nocsd.so $FLATPAK_DEST/usr/lib/libgtk-nocsd.so"
+    ]
+    sources:
+      - type: archive
+        url: https://codeberg.org/MorsMortium/GTK-NoCSD/archive/287ea7f323c9bbcc2c84d7306f7dc0199720fa56.tar.gz
+        sha512: eb36f1d3e6caa3139f1d950876d97a0b4e2c40baeadb67e0782b569164e876137c58f0077713171aff17af1bc9bb854668e2b885d1b803801aa2985328a1e1a5
+      - type: archive
+        url: https://gitlab.freedesktop.org/wlroots/wlroots/-/archive/0.18.3/wlroots-0.18.3.tar.gz
+        sha512: 68dd2b1c020ab3956ae3830ca05134ae76853e3ba766d621d1c505af81780c3383a8cf11ae3f1b0c2c6d3ca0bafc0b4f194e2ac94365cc0f79f24c3530e0b4b3
+        dest: "wlroots"
+      - type: archive
+        url: https://gitlab.freedesktop.org/wayland/wayland/-/releases/1.24.0/downloads/wayland-1.24.0.tar.xz
+        sha256: 82892487a01ad67b334eca83b54317a7c86a03a89cfadacfef5211f11a5d0536
+        dest: "wlroots/subprojects/wayland"
+      - type: archive
+        url: https://www.x.org/releases/individual/lib/pixman-0.46.4.tar.xz
+        sha512: 83b133e7969ba34f883f4e08dcc5d388c4397f43ce836c191c05945fe77c16ff501d531600780c12678a0d08105828a6bdeff2156b63f9c1a84087bc7f40ae9f
+        dest: "wlroots/subprojects/pixman"
+      - type: archive
+        url: https://gitlab.freedesktop.org/mesa/libdrm/-/archive/libdrm-2.4.129/libdrm-libdrm-2.4.129.tar.gz
+        sha512: a58c3e587905e7433a7e396b8044c40177ca8669b27a7a985967c545c8c7d3c326ada0aa1f23590d8b73d5d092233acaee9884f41d1597be6613038ff7ab4693
+        dest: "wlroots/subprojects/libdrm"
+      - type: archive
+        url: https://github.com/xkbcommon/libxkbcommon/archive/refs/tags/xkbcommon-1.13.0.tar.gz
+        sha512: 679ab25bc660798db69b78d0476cd945fe9796e30075faf351aad9adbb65744033387e7034e5b104847ecc6a5164c274c03027fbbf4199b480fa48607db55dda
+        dest: "wlroots/subprojects/libxkbcommon"
+      - type: archive
+        url: https://gitlab.freedesktop.org/wayland/wayland-protocols/-/archive/1.45/wayland-protocols-1.45.tar.gz
+        sha512: 3c7a8370498a6ed1767bbe1ad23c97805c1cb524157d88a83ecc79caa511f3fc9ad74bf6124f84e2edeffd5d5d2895a0c68f5100d3ef62d38de44a8e55a12605
+        dest: "wlroots/subprojects/wayland-protocols"
