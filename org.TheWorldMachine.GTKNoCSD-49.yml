@@ -19,8 +19,8 @@ modules:
     ]
     sources:
       - type: archive
-        url: https://codeberg.org/MorsMortium/GTK-NoCSD/archive/287ea7f323c9bbcc2c84d7306f7dc0199720fa56.tar.gz
-        sha512: eb36f1d3e6caa3139f1d950876d97a0b4e2c40baeadb67e0782b569164e876137c58f0077713171aff17af1bc9bb854668e2b885d1b803801aa2985328a1e1a5
+        url: https://codeberg.org/MorsMortium/GTK-NoCSD/archive/4dd07f06c942eac7118fe51860fbc701ef5be374.tar.gz
+        sha512: 20c516cf847b07e8d9faef99d7cfe8a4741c9529210751909727106f2ccb7e21cb5c0c2e8f482fec5b4d8e0eaea22000c562b763c22e8053c4ae884d5a547ef4
       - type: archive
         url: https://gitlab.freedesktop.org/wlroots/wlroots/-/archive/0.18.3/wlroots-0.18.3.tar.gz
         sha512: 68dd2b1c020ab3956ae3830ca05134ae76853e3ba766d621d1c505af81780c3383a8cf11ae3f1b0c2c6d3ca0bafc0b4f194e2ac94365cc0f79f24c3530e0b4b3
